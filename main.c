@@ -14,7 +14,7 @@ the amount of delay for your LCD controller. */
 #define EN 0x80 /* PORTA BIT7 mask */
 
 
-int pass[4];
+int pass[4]; //global array password 
 
 
 void delayMs(int n);
@@ -29,6 +29,7 @@ unsigned char keypad_getkey(void);
 unsigned char keypad_getchar(void);
 
 void set_pass(void);
+unsigned char check_pass(int arr[4]);
 
 int main(void)
 {
@@ -197,6 +198,17 @@ void set_pass(void)
 	{
 		pass[i]= keypad_getchar();
 	}
+}
+
+unsigned char check_pass(int arr[4])
+{
+	int i;
+	for (i=0;i<4;i++)
+	{
+		if (pass[i]!=arr[i])
+			return 0;
+	}
+	return 1;
 }
 
 
