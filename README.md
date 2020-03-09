@@ -1,2 +1,2 @@
 # Safe-box
-Embedded system to safe box using TIVA C
+Embedded system application of safe box using TIVA C
