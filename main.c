@@ -4,12 +4,18 @@ the amount of delay for your LCD controller. */
 #define LCD_DATA GPIOB
 #define LCD_CTRL GPIOA
 
+
+
 #define KEYPAD_ROW GPIOE
 #define KEYPAD_COL GPIOC
 
 #define RS 0x20 /* PORTA BIT5 mask */
 #define RW 0x40 /* PORTA BIT6 mask */
 #define EN 0x80 /* PORTA BIT7 mask */
+
+
+int pass[4];
+
 
 void delayMs(int n);
 void delayUs(int n);
@@ -22,6 +28,7 @@ void keypad_init(void);
 unsigned char keypad_getkey(void);
 unsigned char keypad_getchar(void);
 
+void set_pass(void);
 
 int main(void)
 {
@@ -180,6 +187,18 @@ delayMs(20); /* wait to debounce */
 }while(keypad_getkey() != key);
 return key;
 }
+
+
+/*this is a set password function */
+void set_pass(void)
+{
+	int i;
+	for (i=0;i<4;i++)
+	{
+		pass[i]= keypad_getchar();
+	}
+}
+
 
 
 /* This function is called by the startup assembly code to perform system specific

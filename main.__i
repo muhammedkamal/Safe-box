@@ -1,0 +1,6 @@
+-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork 
+-I C:\Keil\ARM\RV31\INC
+-I C:\Keil\ARM\CMSIS\Include
+-I C:\Keil\ARM\Inc\TI\TM4C123
+-DTM4C1230H6PM
+-o .\main.o --omf_browse .\main.crf --depend .\main.d "main.c"
